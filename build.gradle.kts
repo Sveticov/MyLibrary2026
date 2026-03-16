@@ -1,12 +1,15 @@
 plugins {
     kotlin("jvm") version "2.3.0"
+    `java-library`
+    `maven-publish`
 }
 
-group = "org.example"
-version = "1.0-SNAPSHOT"
+group = "org.svetikov"
+version = "1.0.1"
 
 repositories {
     mavenCentral()
+
 }
 
 dependencies {
@@ -19,4 +22,19 @@ kotlin {
 
 tasks.test {
     useJUnitPlatform()
+}
+
+publishing {
+
+    publications {
+
+        create<MavenPublication>("maven") {
+
+            groupId = "com.svetikov"
+            artifactId = "MyLibrary2026"
+            version = "1.0.1"
+
+            from(components["java"])
+        }
+    }
 }
